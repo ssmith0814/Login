@@ -3,10 +3,8 @@ package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +31,6 @@ public class Main extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
         Label userName = new Label("User Name:");
@@ -61,14 +58,18 @@ public class Main extends Application {
 
             @Override
             public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.FIREBRICK);
                 actiontarget.setText("Sign in button pressed");
             }
         });
 
+        scenetitle.setId("welcome-text");
+
+        actiontarget.setId("actiontarget");
+
         Scene scene = new Scene(grid, 300, 275);
         primaryStage.setScene(scene);
-
+        scene.getStylesheets().add
+                (Main.class.getResource("Login.css").toExternalForm());
         primaryStage.show();
     }
 
